@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautiful Webpage</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to My Beautiful Webpage</h1>
+  </header>
+  <main>
+    <section>
+      <h2>About This Page</h2>
+      <p>This is a simple HTML page styled with CSS and dockerized for testing purposes. Enjoy the beauty!</p>
+    </section>
+    <section>
+      <h2>Features</h2>
+      <ul>
+        <li>Responsive Design</li>
+        <li>Clean and Simple Layout</li>
+        <li>Dockerized for Easy Testing</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Make Changes Here</h2>
+      <p>Feel free to change this &#8594; change me </p>
+    </section>
+    <section>
+      <h2>Backend Data</h2>
+      <p id="api-message">Loading message from backend...</p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 My Beautiful Webpage</p>
+  </footer>
+  <script>
+    fetch('/api')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('api-message').innerText = data.message;
+      })
+      .catch(error => {
+        console.error('Error fetching data from backend:', error);
+        document.getElementById('api-message').innerText = 'Failed to load message from backend.';
+      });
+  </script>
+</body>
+
+</html>
